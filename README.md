@@ -12,8 +12,7 @@ Databázi pravděpodobně budu řešit přes [node-json-db](https://www.npmjs.co
 4. Čekám od předmětu asi to, že mě posune hlavně ve věcech, kterým se chci věnovat a nebude mě zbytečně ničit
 
 # Návrh DB
-**Tady bude fotka navrzene DB**
-Databáze budou celkem 2
+![Obrázek databáze](assets/DB_img.png)
 
 1. Bude DB předmětů a učitelů
 2. Bude ROLES-RULES-POINTS TABLE, kde budou rozhozene bodu za akademicke achievmenty
@@ -26,3 +25,4 @@ Zatím mám jenom 24 hodinový den.
 2. Jak moc se bude řešit responsive design?
 3. Jak moc se bude řešit vyhledavani v DB?
 4. Co  jsem pochopil, tak mi staci momentalne jenom udelat DB a listing, real DB si udeal koncovy uzivatel, tim mam na mysli to, že si zapíše realne body za akademicke Achievmenty sám. Že si zároveň i sám sepíše předměty atd.
+5. Jak vlastně funguje to udělování bodů, to je mi trochu tajemstvim
