@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from tinydb import TinyDB, Query
+from enum import Enum
 
 #LOAD DBs
 
@@ -9,6 +10,40 @@ db_courses = TinyDB('../DBs/courses.json')
 db_empls = TinyDB('../DBs/employees.json')
 db_points = TinyDB('../DBs/points.json')
 db_wrkflg = TinyDB('../DBs/work_flags.json')
+
+##Tady doplnit score fnc
+"""
+Hodina přednášky – double – 1,8
+Hodina cvičení – double – 1,2
+Hodina semináře – double – 1,2
+Hodina přednášky anglicky – double – 2,4
+Hodina cvičení anglicky – double – 1,8
+Hodina semináře anglicky – double – 1,8
+Udělení jednoho zápočtu – double – 0,2
+Udělení jednoho klasifikovaného zápočtu – double – 0,3
+Udělení jedné zkoušky – double – 0,4
+Udělení jednoho zápočtu anglicky – double – 0,2
+Udělení jednoho klasifikovaného zápočtu anglicky – double – 0,3
+Udělení jedné zkoušky – anglicky - double – 0,4
+"""
+class Points():
+	LECTURE = 1.8
+	EXCERC = 1.2
+	SEMIN = 1.2
+	
+	LECTURE_EN = 2.4
+	EXCERC_EN = 1.8
+	SEMIN_EN = 1.8
+
+	CREDIT = 0.2
+	CLASS_CREDIT = 0.3
+	EXAM = 0.4
+
+	CREDIT_EN = 0.2
+	CLASS_CREDIT_EN = 0.3
+	EXAM_EN = 0.4
+
+#print(Points.LECTURE + Points.EXAM)
 
 #CREATIONS
 #group creation
@@ -71,54 +106,8 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 				'Language' : lang,\
 				'Flag_points' : flag_points,\
 				}
-	ID = enumerator(db_wrkflg)
 
 	return(db_wrkflg.insert({'name':name, 'info':workflag}))
-
-#ID enumerator
-def enumerator(database):
-	return(len(database))
-
-
-##EDITIONS
-
-#def edit_group():
-
-# def edit_course():
-
-# def edit_empl():
-
-# def edit_wrkflg():
-
-# #DELETE FNCs
-
-def del_group(group): #Enter group shortcut
-	return (db_groups.update(delete(group)))
-
-def del_course(course): #Enter course shortcut
-	return(print("hellp"))
-
-def del_empl(employee): #Enter employee workmail
-	return(print("hellp"))
-
-def del_wrkflg(workflag): #enter workflag_name
-	return(print("hellp"))
-##Tady doplnit score fnc
-"""
-Hodina přednášky – double – 1,8
-Hodina cvičení – double – 1,2
-Hodina semináře – double – 1,2
-Hodina přednášky anglicky – double – 2,4
-Hodina cvičení anglicky – double – 1,8
-Hodina semináře anglicky – double – 1,8
-Udělení jednoho zápočtu – double – 0,2
-Udělení jednoho klasifikovaného zápočtu – double – 0,3
-Udělení jedné zkoušky – double – 0,4
-Udělení jednoho zápočtu anglicky – double – 0,2
-Udělení jednoho klasifikovaného zápočtu anglicky – double – 0,3
-Udělení jedné zkoušky – anglicky - double – 0,4
-#def points():
-"""
 
 def test():
 	#test group creation
