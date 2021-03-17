@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1080</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Softik pro tajemnika</string>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="Save_btn">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>670</y>
+      <width>90</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Quit_btn">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>670</y>
+      <width>90</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabs">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>1081</width>
+      <height>661</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="groups_tab">
+     <attribute name="title">
+      <string>Skupiny</string>
+     </attribute>
+     <widget class="QPushButton" name="delGroup_btn">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>600</y>
+        <width>90</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Odebrat</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="group_tbl">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>11</y>
+        <width>1061</width>
+        <height>581</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="addGroup_btn">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>600</y>
+        <width>90</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Přidat</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="courses_tab">
+     <attribute name="title">
+      <string>Předměty</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="employes_tab">
+     <attribute name="title">
+      <string>Zaměstnanci</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>1061</width>
+        <height>581</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="addEmpl_btn">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>600</y>
+        <width>90</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Přidat</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="delEmpl_btn">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>600</y>
+        <width>90</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Odebrat</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="working_tab">
+     <attribute name="title">
+      <string>Pracovní štítky</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="points_tab">
+     <attribute name="title">
+      <string>Body</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
