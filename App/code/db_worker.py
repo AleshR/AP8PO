@@ -13,7 +13,8 @@ db_wrkflg = TinyDB('../DBs/work_flags.json')
 #CREATIONS
 #group creation
 def create_group(shortcut, grade, sem, std_no, form, degree, lang):
-	group = {'Shortcut' : shortcut,\
+	group = {
+			 'Shortcut' : shortcut,\
 			 'Grade' : 	grade,\
 			 'Semester' : sem,\
 			 'Students' : std_no,\
@@ -22,11 +23,12 @@ def create_group(shortcut, grade, sem, std_no, form, degree, lang):
 			 'Language' : lang,\
 			}
 
-	return(db_groups.insert(group))
+	return(db_groups.insert({'name':shortcut, 'info':group}))
 
 #course creation
 def create_course(shortcut, weeks, predn, cv, semin, zak, lang, classR, group_list):
-	course = {  'Shortcut' : shortcut,\
+	course = {  
+				'Shortcut' : shortcut,\
 				'Weeks' : weeks,\
 				'Predn' : predn,\
 				'CV' : cv,\
@@ -37,11 +39,12 @@ def create_course(shortcut, weeks, predn, cv, semin, zak, lang, classR, group_li
 				'Group_list' : group_list,\
 			}
 
-	return(db_courses.insert(course))
+	return(db_courses.insert({'name': shortcut, 'info':course}))
 
 #employee creation
 def create_empl(name, surname, w_mail, p_mail, pts_wo_eng, pts_w_eng, doct, oblig, flags):
-	employee = {'Name' : name,\
+	employee = {
+				'Name' : name,\
 				'Surname' : surname,\
 				'NameAll' : (name + ' ' +surname),\
 				'Work_mail' : w_mail,\
@@ -53,11 +56,12 @@ def create_empl(name, surname, w_mail, p_mail, pts_wo_eng, pts_w_eng, doct, obli
 				'Flags' : flags,\
 				}
 
-	return(db_empls.insert(employee))
+	return(db_empls.insert({'name': (name + ' ' +surname),'info':employee}))
 
 #workflag creation - doplnit propojeni employee --> DB
 def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, flag_points):
-	workflag = {'Flag_name' : name,\
+	workflag = {
+				'Flag_name' : name,\
 				'Employee' : employee,\
 				'Course' : course,\
 				'Flag_type' : flag_type,\
@@ -67,12 +71,18 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 				'Language' : lang,\
 				'Flag_points' : flag_points,\
 				}
+	ID = enumerator(db_wrkflg)
 
-	return(db_wrkflg.insert(workflag))
+	return(db_wrkflg.insert({'name':name, 'info':workflag}))
 
-# #EDITIONS
+#ID enumerator
+def enumerator(database):
+	return(len(database))
 
-# def edit_group():
+
+##EDITIONS
+
+#def edit_group():
 
 # def edit_course():
 
@@ -82,14 +92,17 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 
 # #DELETE FNCs
 
-# def del_group():
+def del_group(group): #Enter group shortcut
+	return (db_groups.update(delete(group)))
 
-# def del_course():
+def del_course(course): #Enter course shortcut
+	return(print("hellp"))
 
-# def del_empl():
+def del_empl(employee): #Enter employee workmail
+	return(print("hellp"))
 
-# def del_wrkflg():
-
+def del_wrkflg(workflag): #enter workflag_name
+	return(print("hellp"))
 ##Tady doplnit score fnc
 """
 Hodina přednášky – double – 1,8
@@ -109,21 +122,22 @@ Udělení jedné zkoušky – anglicky - double – 0,4
 
 def test():
 	#test group creation
-	#create_group('SWI',4,'LS',36,'P','Bc.','cz')
-	#print(db_groups.all())
+	create_group('SWI',4,'LS',36,'P','Bc.','cz')
+	print(db_groups.all())
+
 
 	#test course creation
-	#create_course('AP8PO',14,1,3,2,'z','cz',24,1)
-	#print(db_courses.all())
+	create_course('AP8PO',14,1,3,2,'z','cz',24,1)
+	print(db_courses.all())
 
 	#test employee creation
-	#create_empl('Pavel', 'Vařacha', 'varacha@utb.cz', 'pavel.varacha@gmail.com', 526, 767,\
-	#False, 1, 'neco')
-	#print(db_empls.all())
+	create_empl('Pavel', 'Vařacha', 'varacha@utb.cz', 'pavel.varacha@gmail.com', 526, 767,\
+	False, 1, 'neco')
+	print(db_empls.all())
 
 	#test flags creation
-	#create_wrkflg('Cvičení AP8PO 1', 'Pavel Vařacha', 'AP8PO' ,'Přednáška', 11, 2, 14,\
-	#'CZ', 12.5)
-	#print(db_wrkflg.all())
+	create_wrkflg('Cvičení AP8PO 1', 'Pavel Vařacha', 'AP8PO' ,'Přednáška', 11, 2, 14,\
+	'CZ', 12.5)
+	print(db_wrkflg.all())
 
 test()
