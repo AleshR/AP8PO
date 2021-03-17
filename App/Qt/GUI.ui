@@ -40,7 +40,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="groups_tab">
      <attribute name="title">
@@ -113,14 +113,14 @@
      <widget class="QPushButton" name="delLec_btn">
       <property name="geometry">
        <rect>
-        <x>970</x>
+        <x>100</x>
         <y>600</y>
         <width>90</width>
         <height>28</height>
        </rect>
       </property>
       <property name="text">
-       <string>Smazat</string>
+       <string>Odebrat</string>
       </property>
      </widget>
     </widget>
@@ -165,7 +165,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="working_tab">
+    <widget class="QWidget" name="flags_tab">
      <attribute name="title">
       <string>Pracovní štítky</string>
      </attribute>
@@ -189,7 +189,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Vytvořit</string>
+       <string>Přidat</string>
       </property>
      </widget>
      <widget class="QPushButton" name="delFlag_btn">
@@ -202,7 +202,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Smazat</string>
+       <string>Odebrat</string>
       </property>
      </widget>
     </widget>
@@ -210,6 +210,44 @@
      <attribute name="title">
       <string>Body</string>
      </attribute>
+     <widget class="QColumnView" name="columnView">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>1051</width>
+        <height>611</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="email_tab">
+     <attribute name="title">
+      <string>e-mail</string>
+     </attribute>
+     <widget class="QPushButton" name="send_emails">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>600</y>
+        <width>90</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Send</string>
+      </property>
+     </widget>
+     <widget class="QColumnView" name="email_list">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>11</y>
+        <width>1041</width>
+        <height>581</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
