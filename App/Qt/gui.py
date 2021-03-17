@@ -97,7 +97,17 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabs.setCurrentIndex(5)
+        self.tabs.setCurrentIndex(0)
+        self.addGroup_btn.clicked['bool'].connect(self.addGroup_btn.click)
+        self.addGroup_btn.clicked['bool'].connect(self.addGroup_btn.click)
+        self.addEmpl_btn.clicked['bool'].connect(self.addEmpl_btn.click)
+        self.addFlag_btn.clicked['bool'].connect(self.addFlag_btn.click)
+        self.addLec_btn.clicked['bool'].connect(self.addLec_btn.click)
+        self.delEmpl_btn.clicked['bool'].connect(self.delEmpl_btn.click)
+        self.delFlag_btn.clicked['bool'].connect(self.addFlag_btn.click)
+        self.delGroup_btn.clicked['bool'].connect(self.delGroup_btn.click)
+        self.delLec_btn.clicked['bool'].connect(self.delLec_btn.click)
+        self.send_emails.clicked['bool'].connect(self.send_emails.click)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

@@ -40,7 +40,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="groups_tab">
      <attribute name="title">
@@ -254,5 +254,166 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>addGroup_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>addGroup_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addGroup_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>addGroup_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addEmpl_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>addEmpl_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addFlag_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>addFlag_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addLec_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>addLec_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delEmpl_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>delEmpl_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>156</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>156</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delFlag_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>addFlag_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>156</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>56</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delGroup_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>delGroup_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>156</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>156</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delLec_btn</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>delLec_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>156</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>156</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>send_emails</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>send_emails</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>66</x>
+     <y>643</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>66</x>
+     <y>643</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
