@@ -109,6 +109,7 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 
 	return(db_wrkflg.insert({'name':name, 'info':workflag}))
 
+"""
 def test():
 	#test group creation
 	create_group('SWI',4,'LS',36,'P','Bc.','cz')
@@ -130,3 +131,4 @@ def test():
 	print(db_wrkflg.all())
 
 test()
+"""
