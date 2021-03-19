@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 
-from tinydb import TinyDB, Query, where
-import json
+from tinydb import TinyDB, Query
+from enum import Enum
 
 #LOAD DBs
+
 db_groups = TinyDB('../DBs/groups.json')
 db_courses = TinyDB('../DBs/courses.json')
 db_empls = TinyDB('../DBs/employees.json')
 db_points = TinyDB('../DBs/points.json')
 db_wrkflg = TinyDB('../DBs/work_flags.json')
 
+##Tady doplnit score fnc
 """
 Hodina přednášky – double – 1,8
 Hodina cvičení – double – 1,2
@@ -45,7 +47,6 @@ class Points():
 
 #CREATIONS
 #group creation
-#Ke všem databazim doplnit db.close() - pro jisttou, at neni konflikt
 def create_group(shortcut, grade, sem, std_no, form, degree, lang):
 	group = {
 			 'Shortcut' : shortcut,\
@@ -56,6 +57,7 @@ def create_group(shortcut, grade, sem, std_no, form, degree, lang):
 			 'Degree' : degree,\
 			 'Language' : lang,\
 			}
+
 	return(db_groups.insert({'name':shortcut, 'info':group}))
 
 #course creation
@@ -107,8 +109,8 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 
 	return(db_wrkflg.insert({'name':name, 'info':workflag}))
 
+"""
 def test():
-	"""
 	#test group creation
 	create_group('SWI',4,'LS',36,'P','Bc.','cz')
 	print(db_groups.all())
@@ -127,12 +129,6 @@ def test():
 	create_wrkflg('Cvičení AP8PO 1', 'Pavel Vařacha', 'AP8PO' ,'Přednáška', 11, 2, 14,\
 	'CZ', 12.5)
 	print(db_wrkflg.all())
-	"""
-	print('length of db_group: ', len(db_groups))
-	print('length of db_wrkflg: ', len(db_wrkflg))
-	print('length of db_empls: ', len(db_empls))
-	print('length of db_courses: ', len(db_courses))
-	print('length of db_points: ', len(db_points))
-
 
 test()
+"""

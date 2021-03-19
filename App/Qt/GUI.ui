@@ -213,10 +213,10 @@
      <widget class="QColumnView" name="columnView">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>0</x>
         <y>10</y>
-        <width>1051</width>
-        <height>611</height>
+        <width>1061</width>
+        <height>581</height>
        </rect>
       </property>
      </widget>
