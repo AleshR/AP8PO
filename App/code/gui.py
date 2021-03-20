@@ -56,14 +56,21 @@ class Ui_MainWindow(object):
         self.group_tbl = QtWidgets.QTableWidget(self.groups_tab)
         self.group_tbl.setGeometry(QtCore.QRect(0, 11, 1061, 581))
         self.group_tbl.setObjectName("group_tbl")
-        self.group_tbl.setColumnCount(2)
-        self.group_tbl.setRowCount(2)
+        self.group_tbl.setColumnCount(self.ColumnInit(db_groups))
+        self.group_tbl.setRowCount(self.RowsInit(db_groups))
         #self.SetData(db_groups)
-        self.group_tbl.setHorizontalHeaderLabels(['trada','2'])
+        self.group_tbl.setHorizontalHeaderLabels([\
+                'Zkratka',\
+                'Ročník',\
+                'Semestr',\
+                'Studentů',\
+                'Forma',\
+                'Stupeň',\
+                'Jazyk'\
+             ])
 
         self.group_tbl.resizeColumnsToContents()
         self.group_tbl.resizeRowsToContents()
-        self.group_tbl.show()
         #######################################
 
         self.addGroup_btn = QtWidgets.QPushButton(self.groups_tab)
@@ -75,12 +82,25 @@ class Ui_MainWindow(object):
 
         #######################################
         #Table courses  
-        self.data_courses = db_courses
-        self.tableWidget = QtWidgets.QTableWidget(self.courses_tab)
-        self.tableWidget.setGeometry(QtCore.QRect(0, 10, 1061, 581))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.resizeColumnsToContents()
-        self.tableWidget.resizeRowsToContents()
+        self.courses_tbl = QtWidgets.QTableWidget(self.courses_tab)
+        self.courses_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
+        self.courses_tbl.setObjectName("courses_tbl")
+        self.courses_tbl.setColumnCount(self.ColumnInit(db_courses))
+        self.courses_tbl.setRowCount(self.RowsInit(db_courses))
+        self.courses_tbl.setHorizontalHeaderLabels([\
+                'Zkratka',\
+                'Týdny',\
+                'Přednášky',\
+                'Cvičení',\
+                'Semináře',\
+                'Zakončení',\
+                'Jazyk',\
+                'Kapacita',\
+                'Skupiny'\
+            ])
+
+        self.courses_tbl.resizeColumnsToContents()
+        self.courses_tbl.resizeRowsToContents()
         #######################################
 
         self.addLec_btn = QtWidgets.QPushButton(self.courses_tab)
@@ -95,12 +115,26 @@ class Ui_MainWindow(object):
         
         #######################################
         #Table workers
-        self.data_workers = db_empls
-        self.tableWidget = QtWidgets.QTableWidget(self.employes_tab)
-        self.tableWidget.setGeometry(QtCore.QRect(0, 10, 1061, 581))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.resizeColumnsToContents()
-        self.tableWidget.resizeRowsToContents()
+        self.employee_tbl = QtWidgets.QTableWidget(self.employes_tab)
+        self.employee_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
+        self.employee_tbl.setObjectName("employee_tbl")
+        self.employee_tbl.setColumnCount(self.ColumnInit(db_empls))
+        self.employee_tbl.setRowCount(self.RowsInit(db_empls))
+        
+        self.employee_tbl.setHorizontalHeaderLabels([\
+                'Jméno',\
+                'Příjmení',\
+                'Celé jméno',\
+                'Prac. e-mail',\
+                'Soukr. e-mail',\
+                'Body bez EN výuky',\
+                'Body s EN výukou',\
+                'Doktorské \n studium',\
+                'Úvazek',\
+                'Štítky',\
+            ])
+        self.employee_tbl.resizeColumnsToContents()
+        self.employee_tbl.resizeRowsToContents()
         #######################################
         
         self.addEmpl_btn = QtWidgets.QPushButton(self.employes_tab)
@@ -115,12 +149,26 @@ class Ui_MainWindow(object):
 
         #######################################
         #Table flags
-        self.data_flags = db_wrkflg
-        self.tableWidget = QtWidgets.QTableWidget(self.flags_tab)
-        self.tableWidget.setGeometry(QtCore.QRect(0, 10, 1061, 581))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.resizeColumnsToContents()
-        self.tableWidget.resizeRowsToContents()
+        self.flags_tbl = QtWidgets.QTableWidget(self.flags_tab)
+        self.flags_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
+        self.flags_tbl.setObjectName("flags_tbl")
+
+        self.flags_tbl.setColumnCount(self.ColumnInit(db_wrkflg))
+        self.flags_tbl.setRowCount(self.RowsInit(db_wrkflg))
+        self.flags_tbl.setHorizontalHeaderLabels([\
+                'Štítek',\
+                'Zaměstnanec',\
+                'Předmět',\
+                'Typ štítku',\
+                'Studenti',\
+                'Hodin',\
+                'Týdny',\
+                'Jazyk',\
+                'Body',\
+            ])
+
+        self.flags_tbl.resizeColumnsToContents()
+        self.flags_tbl.resizeRowsToContents()
         #######################################
 
         self.addFlag_btn = QtWidgets.QPushButton(self.flags_tab)
@@ -135,14 +183,17 @@ class Ui_MainWindow(object):
 
         #######################################
         #Table points
-        self.tableWidget = QtWidgets.QTableWidget(self.points_tab)
-        self.tableWidget.setGeometry(QtCore.QRect(0, 10, 1061, 581))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.resizeColumnsToContents()
-        self.tableWidget.resizeRowsToContents()
+        self.points_tbl = QtWidgets.QTableWidget(self.points_tab)
+        self.points_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
+        self.points_tbl.setObjectName("tableWidget")
+        self.points_tbl.resizeColumnsToContents()
+        self.points_tbl.resizeRowsToContents()
         #######################################
         
         self.tabs.addTab(self.points_tab, "")
+
+        #######################################
+        #Table points
         self.email_tab = QtWidgets.QWidget()
         self.email_tab.setObjectName("email_tab")
         self.send_emails = QtWidgets.QPushButton(self.email_tab)
@@ -192,6 +243,13 @@ class Ui_MainWindow(object):
         self.tabs.setTabText(self.tabs.indexOf(self.email_tab), _translate("MainWindow", "e-mail"))
 
         #End of generated code
+    def RowsInit(self, data):
+        file = data.all()
+        return(len(file))
+
+    def ColumnInit(self, data):
+        file = data.all()
+        return(len(file[0]['info']))
 
     def Click_addGroup_btn(self):
         print("addGroup_btn.click")
