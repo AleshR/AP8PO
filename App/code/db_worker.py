@@ -135,7 +135,7 @@ def test():
 	print('length of db_points: ', len(db_points))
 
 	file = db_empls.all()
-	print(len(file[0]['info']))
+	print(len(file[0]['name']))
 
 
 test()

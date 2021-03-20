@@ -11,6 +11,8 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
+
 from tinydb import TinyDB, Query
 
 db_groups = TinyDB('../DBs/groups.json')
@@ -18,6 +20,16 @@ db_courses = TinyDB('../DBs/courses.json')
 db_empls = TinyDB('../DBs/employees.json')
 db_points = TinyDB('../DBs/points.json')
 db_wrkflg = TinyDB('../DBs/work_flags.json')
+
+"""
+NOTES
+columns and rows... 
+
+columns should be calculate like this (from JSON stuct):
+    |name|-----------INFO---------------
+
+rows should be calculate only from ID (len(json))
+"""
 
 #Some generated code
 class Ui_MainWindow(object):
@@ -41,12 +53,17 @@ class Ui_MainWindow(object):
 
         #######################################
         #Table groups
-        self.data_groups = db_groups
         self.group_tbl = QtWidgets.QTableWidget(self.groups_tab)
         self.group_tbl.setGeometry(QtCore.QRect(0, 11, 1061, 581))
         self.group_tbl.setObjectName("group_tbl")
+        self.group_tbl.setColumnCount(2)
+        self.group_tbl.setRowCount(2)
+        #self.SetData(db_groups)
+        self.group_tbl.setHorizontalHeaderLabels(['trada','2'])
+
         self.group_tbl.resizeColumnsToContents()
         self.group_tbl.resizeRowsToContents()
+        self.group_tbl.show()
         #######################################
 
         self.addGroup_btn = QtWidgets.QPushButton(self.groups_tab)
@@ -173,9 +190,8 @@ class Ui_MainWindow(object):
         self.tabs.setTabText(self.tabs.indexOf(self.points_tab), _translate("MainWindow", "Body"))
         self.send_emails.setText(_translate("MainWindow", "Send"))
         self.tabs.setTabText(self.tabs.indexOf(self.email_tab), _translate("MainWindow", "e-mail"))
-#End of generated code
-    def Table_content(self,db):
-        return(len('info'))
+
+        #End of generated code
 
     def Click_addGroup_btn(self):
         print("addGroup_btn.click")
