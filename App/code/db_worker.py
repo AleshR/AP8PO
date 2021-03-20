@@ -126,19 +126,28 @@ def test():
 	#test flags creation
 	create_wrkflg('Cvičení AP8PO 1', 'Pavel Vařacha', 'AP8PO' ,'Přednáška', 11, 2, 14,\
 	'CZ', 12.5)
+	
 	print(db_wrkflg.all())
-	"""
+
 	print('length of db_group: ', len(db_groups))
 	print('length of db_wrkflg: ', len(db_wrkflg))
 	print('length of db_empls: ', len(db_empls))
 	print('length of db_courses: ', len(db_courses))
 	print('length of db_points: ', len(db_points))
+	"""
 
-	file = db_empls.all()
+	file = db_groups.all()
 
 	print(len(file)) #number of records
-	print(len(file[0]['name'])) #number of letters in name
-	print(len(file[0]['info'])) #number of objects in info
+	#print(len(file[0]['name'])) #number of letters in name
+	#print((file[0]['info']['Surname'])) #number of objects in info
 
+	#for x in file[0]['info']:
+	#	val = file[0]['info'][x]
+	#	print(val)
+	#print(file[0]['info'])
 
 test()
+
+
+

@@ -58,7 +58,7 @@ class Ui_MainWindow(object):
         self.group_tbl.setObjectName("group_tbl")
         self.group_tbl.setColumnCount(self.ColumnInit(db_groups))
         self.group_tbl.setRowCount(self.RowsInit(db_groups))
-        #self.SetData(db_groups)
+        
         self.group_tbl.setHorizontalHeaderLabels([\
                 'Zkratka',\
                 'Ročník',\
@@ -71,6 +71,7 @@ class Ui_MainWindow(object):
 
         self.group_tbl.resizeColumnsToContents()
         self.group_tbl.resizeRowsToContents()
+        self.TableFeeder(self.group_tbl,db_groups) #Let's feed table with data
         #######################################
 
         self.addGroup_btn = QtWidgets.QPushButton(self.groups_tab)
@@ -101,6 +102,7 @@ class Ui_MainWindow(object):
 
         self.courses_tbl.resizeColumnsToContents()
         self.courses_tbl.resizeRowsToContents()
+        self.TableFeeder(self.courses_tbl,db_courses) #Let's feed table with data
         #######################################
 
         self.addLec_btn = QtWidgets.QPushButton(self.courses_tab)
@@ -135,6 +137,7 @@ class Ui_MainWindow(object):
             ])
         self.employee_tbl.resizeColumnsToContents()
         self.employee_tbl.resizeRowsToContents()
+        self.TableFeeder(self.employee_tbl,db_empls) #Let's feed table with data
         #######################################
         
         self.addEmpl_btn = QtWidgets.QPushButton(self.employes_tab)
@@ -169,6 +172,7 @@ class Ui_MainWindow(object):
 
         self.flags_tbl.resizeColumnsToContents()
         self.flags_tbl.resizeRowsToContents()
+        self.TableFeeder(self.flags_tbl,db_wrkflg) #Let's feed table with data
         #######################################
 
         self.addFlag_btn = QtWidgets.QPushButton(self.flags_tab)
@@ -185,7 +189,7 @@ class Ui_MainWindow(object):
         #Table points
         self.points_tbl = QtWidgets.QTableWidget(self.points_tab)
         self.points_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
-        self.points_tbl.setObjectName("tableWidget")
+        self.points_tbl.setObjectName("points_tbl")
         self.points_tbl.resizeColumnsToContents()
         self.points_tbl.resizeRowsToContents()
         #######################################
@@ -199,6 +203,7 @@ class Ui_MainWindow(object):
         self.send_emails = QtWidgets.QPushButton(self.email_tab)
         self.send_emails.setGeometry(QtCore.QRect(10, 600, 90, 28))
         self.send_emails.setObjectName("send_emails")
+        
         self.email_list = QtWidgets.QColumnView(self.email_tab)
         self.email_list.setGeometry(QtCore.QRect(10, 11, 1041, 581))
         self.email_list.setObjectName("email_list")
@@ -250,6 +255,18 @@ class Ui_MainWindow(object):
     def ColumnInit(self, data):
         file = data.all()
         return(len(file[0]['info']))
+
+    def TableFeeder(self,table,data):
+        file = data.all()
+
+        for y in range(len(file)):
+            column = 0
+            for x in file[0]['info']:
+                val = file[0]['info'][x]
+                table.setItem(y,column,QTableWidgetItem(str(val)))
+                column+=1
+
+        return(print("ghettoFeeder"))
 
     def Click_addGroup_btn(self):
         print("addGroup_btn.click")
