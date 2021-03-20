@@ -77,7 +77,7 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Plánuju přidat a odebrat řádek - promítne se přímo do databáze
 
-![img](/home/alesh/Dokumenty/UTB/AP8PO/assets/working_flagsGUI.png)
+![img](assets/working_flagsGUI.png)
 
 #### Zaměstnanci
 
@@ -87,7 +87,7 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Cross-connection databazi dopisu asi v neděli
 
-![](/home/alesh/Dokumenty/UTB/AP8PO/assets/workers_gui.png)
+![](assets/workers_gui.png)
 
 #### Předměty:
 
@@ -95,7 +95,7 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Jinak opět funkcionalita stejná, jak u zbytku (přidat/odebrat)
 
-![](/home/alesh/Dokumenty/UTB/AP8PO/assets/lessons.png)
+![](assets/lessons.png)
 
 
 
@@ -103,7 +103,7 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Zatim jsem je jen narychlo generoval, opět všechno dynamicky generované
 
-![](/home/alesh/Dokumenty/UTB/AP8PO/assets/GUI_groups.png)
+![](assets/GUI_groups.png)
 
 #### JSON data
 
@@ -115,9 +115,9 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Databáze mám krom *bodového systému* všechny -> App/DBs
 
-![](/home/alesh/Dokumenty/UTB/AP8PO/assets/coursesJSON.png)
+![](assets/coursesJSON.png)
 
-![](/home/alesh/Dokumenty/UTB/AP8PO/assets/wrk_flgJSON.png)
+![](assets/wrk_flgJSON.png)
 
 # Problémy
 
