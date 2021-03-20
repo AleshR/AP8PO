@@ -69,9 +69,10 @@ class Ui_MainWindow(object):
                 'Jazyk'\
              ])
 
+        self.TableFeeder(self.group_tbl,db_groups) #Let's feed table with data
+        
         self.group_tbl.resizeColumnsToContents()
         self.group_tbl.resizeRowsToContents()
-        self.TableFeeder(self.group_tbl,db_groups) #Let's feed table with data
         #######################################
 
         self.addGroup_btn = QtWidgets.QPushButton(self.groups_tab)
@@ -100,9 +101,10 @@ class Ui_MainWindow(object):
                 'Skupiny'\
             ])
 
+        self.TableFeeder(self.courses_tbl,db_courses) #Let's feed table with data
+        
         self.courses_tbl.resizeColumnsToContents()
         self.courses_tbl.resizeRowsToContents()
-        self.TableFeeder(self.courses_tbl,db_courses) #Let's feed table with data
         #######################################
 
         self.addLec_btn = QtWidgets.QPushButton(self.courses_tab)
@@ -114,11 +116,10 @@ class Ui_MainWindow(object):
         self.tabs.addTab(self.courses_tab, "")
         self.employes_tab = QtWidgets.QWidget()
         self.employes_tab.setObjectName("employes_tab")
-        
         #######################################
         #Table workers
         self.employee_tbl = QtWidgets.QTableWidget(self.employes_tab)
-        self.employee_tbl.setGeometry(QtCore.QRect(0, 10, 800, 581))
+        self.employee_tbl.setGeometry(QtCore.QRect(0, 10, 1000, 581))
         self.employee_tbl.setObjectName("employee_tbl")
         self.employee_tbl.setColumnCount(self.ColumnInit(db_empls))
         self.employee_tbl.setRowCount(self.RowsInit(db_empls))
@@ -135,9 +136,11 @@ class Ui_MainWindow(object):
                 'Úvazek',\
                 'Štítky',\
             ])
+
+        self.TableFeeder(self.employee_tbl,db_empls) #Let's feed table with data
+        
         self.employee_tbl.resizeColumnsToContents()
         self.employee_tbl.resizeRowsToContents()
-        self.TableFeeder(self.employee_tbl,db_empls) #Let's feed table with data
         #######################################
         
         self.addEmpl_btn = QtWidgets.QPushButton(self.employes_tab)
@@ -170,9 +173,10 @@ class Ui_MainWindow(object):
                 'Body',\
             ])
 
+        self.TableFeeder(self.flags_tbl,db_wrkflg) #Let's feed table with data
+        
         self.flags_tbl.resizeColumnsToContents()
         self.flags_tbl.resizeRowsToContents()
-        self.TableFeeder(self.flags_tbl,db_wrkflg) #Let's feed table with data
         #######################################
 
         self.addFlag_btn = QtWidgets.QPushButton(self.flags_tab)
