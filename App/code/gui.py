@@ -54,7 +54,7 @@ class Ui_MainWindow(object):
         #######################################
         #Table groups
         self.group_tbl = QtWidgets.QTableWidget(self.groups_tab)
-        self.group_tbl.setGeometry(QtCore.QRect(0, 11, 1061, 581))
+        self.group_tbl.setGeometry(QtCore.QRect(0, 11, 800, 581))
         self.group_tbl.setObjectName("group_tbl")
         self.group_tbl.setColumnCount(self.ColumnInit(db_groups))
         self.group_tbl.setRowCount(self.RowsInit(db_groups))
@@ -84,7 +84,7 @@ class Ui_MainWindow(object):
         #######################################
         #Table courses  
         self.courses_tbl = QtWidgets.QTableWidget(self.courses_tab)
-        self.courses_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
+        self.courses_tbl.setGeometry(QtCore.QRect(0, 10, 800, 581))
         self.courses_tbl.setObjectName("courses_tbl")
         self.courses_tbl.setColumnCount(self.ColumnInit(db_courses))
         self.courses_tbl.setRowCount(self.RowsInit(db_courses))
@@ -118,7 +118,7 @@ class Ui_MainWindow(object):
         #######################################
         #Table workers
         self.employee_tbl = QtWidgets.QTableWidget(self.employes_tab)
-        self.employee_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
+        self.employee_tbl.setGeometry(QtCore.QRect(0, 10, 800, 581))
         self.employee_tbl.setObjectName("employee_tbl")
         self.employee_tbl.setColumnCount(self.ColumnInit(db_empls))
         self.employee_tbl.setRowCount(self.RowsInit(db_empls))
@@ -153,7 +153,7 @@ class Ui_MainWindow(object):
         #######################################
         #Table flags
         self.flags_tbl = QtWidgets.QTableWidget(self.flags_tab)
-        self.flags_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
+        self.flags_tbl.setGeometry(QtCore.QRect(0, 10, 800, 581))
         self.flags_tbl.setObjectName("flags_tbl")
 
         self.flags_tbl.setColumnCount(self.ColumnInit(db_wrkflg))
@@ -188,7 +188,7 @@ class Ui_MainWindow(object):
         #######################################
         #Table points
         self.points_tbl = QtWidgets.QTableWidget(self.points_tab)
-        self.points_tbl.setGeometry(QtCore.QRect(0, 10, 1061, 581))
+        self.points_tbl.setGeometry(QtCore.QRect(0, 10, 800, 581))
         self.points_tbl.setObjectName("points_tbl")
         self.points_tbl.resizeColumnsToContents()
         self.points_tbl.resizeRowsToContents()
@@ -201,11 +201,11 @@ class Ui_MainWindow(object):
         self.email_tab = QtWidgets.QWidget()
         self.email_tab.setObjectName("email_tab")
         self.send_emails = QtWidgets.QPushButton(self.email_tab)
-        self.send_emails.setGeometry(QtCore.QRect(10, 600, 90, 28))
+        self.send_emails.setGeometry(QtCore.QRect(0, 600, 90, 28))
         self.send_emails.setObjectName("send_emails")
         
         self.email_list = QtWidgets.QColumnView(self.email_tab)
-        self.email_list.setGeometry(QtCore.QRect(10, 11, 1041, 581))
+        self.email_list.setGeometry(QtCore.QRect(0, 10, 800, 581))
         self.email_list.setObjectName("email_list")
         self.tabs.addTab(self.email_tab, "")
         MainWindow.setCentralWidget(self.centralwidget)
