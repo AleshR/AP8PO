@@ -107,13 +107,23 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 
 	return(db_wrkflg.insert({'name':name, 'info':workflag}))
 
+"""
+def delete_record(db,index):
+	file = db.all()[index]
+
+	print(file)
+	return(print(db_groups.tables()))
+
+#return(db.all()[index])
+delete_record(db_groups,1)
+"""
+"""
 def test():
 	
 	#test group creation
 	create_group('SWI',4,'LS',36,'P','Bc.','cz')
 	print(db_groups.all())
-	"""
-
+	
 	#test course creation
 	create_course('AP8PO',14,1,3,2,'z','cz',24,1)
 	print(db_courses.all())
@@ -134,7 +144,6 @@ def test():
 	print('length of db_empls: ', len(db_empls))
 	print('length of db_courses: ', len(db_courses))
 	print('length of db_points: ', len(db_points))
-	"""
 
 	file = db_groups.all()
 
@@ -148,6 +157,5 @@ def test():
 	#print(file[0]['info'])
 
 test()
-
-
+"""
 

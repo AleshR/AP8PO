@@ -10,9 +10,10 @@
 
 
 import sys
+import db_worker
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
-
 from tinydb import TinyDB, Query
 
 db_groups = TinyDB('../DBs/groups.json')
@@ -274,30 +275,111 @@ class Ui_MainWindow(object):
 
     def Click_addGroup_btn(self):
         print("addGroup_btn.click")
+        #Call function associated to button > render output (for actual values)
+        #db_worker.test() #imported test fnc >> only for testing purpose
+        """
+        db_worker.create_group(shortcut,\
+                                grade,\
+                                sem,\
+                                std_no,\
+                                form,\
+                                degree,\
+                                lang\
+                                )
+        """
+        self.setupUi(MainWindow)
     
     def Click_addEmpl_btn(self):
         print("addEmpl_btn.click")
+        #Call function associated to button > render output (for actual values)
+        """
+        db_worker.create_empl(name,\
+                              surname,\
+                              w_mail,\
+                              p_mail,\
+                              pts_wo_eng,\
+                              pts_w_eng,\
+                              doct,\
+                              oblig,\
+                              flags\
+                              )
+        """
+        self.setupUi(MainWindow)
     
     def Click_addFlag_btn(self):
         print("addFlag_btn.click")
+        #Call function associated to button > render output (for actual values)
+        #db_worker.test() #imported test fnc >> only for testing purpose
+
+        self.setupUi(MainWindow)
     
     def Click_addLec_btn(self):
         print("addLec_btn.click")
+        #Call function associated to button > render output (for actual values)
+        #db_worker.test() #imported test fnc >> only for testing purpose
+        
+        """
+        db_worker.create_course(shortcut,\
+                                weeks,\
+                                predn,\
+                                cv,\
+                                semin,\
+                                zak,\
+                                lang,\
+                                classR,\
+                                group_list\
+                                )
+        """
+
+        self.setupUi(MainWindow)
     
     def Click_delEmpl_btn(self):
         print("delEmpl_btn.click")
+        #Call function associated to button > render output (for actual values)
+        #db_worker.test() #imported test fnc >> only for testing purpose
+
+        self.setupUi(MainWindow)
     
     def Click_delFlag_btn(self):
         print("addFlag_btn.click")
+        #Call function associated to button > render output (for actual values)
+        """
+        db_worker.create_wrkflg(name,\
+                                employee,\
+                                course,\
+                                flag_type,\
+                                stds_no,\
+                                hrs,\
+                                weeks,\
+                                lang,\
+                                flag_points\
+                                )
+        """
+
+        self.setupUi(MainWindow)
     
     def Click_delGroup_btn(self):
         print("delGroup_btn.click")
+        idx = self.group_tbl.currentRow()
+        print(idx)
+        #db_worker.delete_record(db_groups,idx) #upravit mazani v DB podle indexu
+        
+        #Call function associated to button > render output (for actual values)
+        self.setupUi(MainWindow)
     
     def Click_delLec_btn(self):
         print("delLec_btn.click")
+        #Call function associated to button > render output (for actual values)
+        #db_worker.test() #imported test fnc >> only for testing purpose
+
+        self.setupUi(MainWindow)
     
     def Click_send_emails(self):
         print("send_emails.click")
+        #Call function associated to button > render output (for actual values)
+        #db_worker.test() #imported test fnc >> only for testing purpose
+
+        self.setupUi(MainWindow)
 
     def Quit_btn_clicked(self):
         sys.exit(app.exec_())  
