@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 
 from tinydb import TinyDB, Query, where
+from time import time
 import json
+import hashlib
+
+QueryBuilder = Query()
 
 #LOAD DBs
 db_groups = TinyDB('../DBs/groups.json')
@@ -56,8 +60,11 @@ def create_group(shortcut, grade, sem, std_no, form, degree, lang):
 			 'Degree' : degree,\
 			 'Language' : lang,\
 			}
-	return(db_groups.insert({'name':shortcut, 'info':group}))
+	
+	stmp = str(float(time()))+shortcut
+	hash_stmp = hashlib.sha1(stmp.encode())
 
+	return(db_groups.insert({'name':shortcut, 'info':group, 'tsmp': str(hash_stmp.hexdigest())}))
 #course creation
 def create_course(shortcut, weeks, predn, cv, semin, zak, lang, classR, group_list):
 	course = {  
@@ -72,7 +79,10 @@ def create_course(shortcut, weeks, predn, cv, semin, zak, lang, classR, group_li
 				'Group_list' : group_list,\
 			}
 
-	return(db_courses.insert({'name': shortcut, 'info':course}))
+	stmp = str(float(time()))+shortcut
+	hash_stmp = hashlib.sha1(stmp.encode())
+
+	return(db_courses.insert({'name': shortcut, 'info':course, 'tsmp': str(hash_stmp.hexdigest())}))
 
 #employee creation
 def create_empl(name, surname, w_mail, p_mail, pts_wo_eng, pts_w_eng, doct, oblig, flags):
@@ -88,8 +98,11 @@ def create_empl(name, surname, w_mail, p_mail, pts_wo_eng, pts_w_eng, doct, obli
 				'Obligation' : oblig,\
 				'Flags' : flags,\
 				}
+	
+	stmp = str(float(time()))+surname
+	hash_stmp = hashlib.sha1(stmp.encode())
 
-	return(db_empls.insert({'name': (name + ' ' +surname),'info':employee}))
+	return(db_empls.insert({'name': (name + ' ' +surname),'info':employee, 'tsmp': str(hash_stmp.hexdigest())}))
 
 #workflag creation - doplnit propojeni employee --> DB
 def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, flag_points):
@@ -105,18 +118,17 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 				'Flag_points' : flag_points,\
 				}
 
-	return(db_wrkflg.insert({'name':name, 'info':workflag}))
+	stmp = str(float(time()))+name
+	hash_stmp = hashlib.sha1(stmp.encode())
 
-"""
+	return(db_wrkflg.insert({'name':name, 'info':workflag, 'tsmp': str(hash_stmp.hexdigest())}))
+
+#Look at tables creation, maybe redesign DB creation, to make removing records easier...
 def delete_record(db,index):
 	file = db.all()[index]
+	return(db.remove((QueryBuilder.tsmp == file['tsmp'])))
 
-	print(file)
-	return(print(db_groups.tables()))
-
-#return(db.all()[index])
-delete_record(db_groups,1)
-"""
+#delete_record(db_wrkflg,1)
 """
 def test():
 	
@@ -156,6 +168,7 @@ def test():
 	#	print(val)
 	#print(file[0]['info'])
 
-test()
+for x in range(1,50):
+	pass
+	test()
 """
-

@@ -114,7 +114,8 @@ class Ui_MainWindow(object):
         self.delLec_btn = QtWidgets.QPushButton(self.courses_tab)
         self.delLec_btn.setGeometry(QtCore.QRect(100, 600, 90, 28))
         self.delLec_btn.setObjectName("delLec_btn")
-        self.tabs.addTab(self.courses_tab, "")
+        self.tabs.addTab(self.courses_tab, "courses_tab")
+
         self.employes_tab = QtWidgets.QWidget()
         self.employes_tab.setObjectName("employes_tab")
         #######################################
@@ -186,7 +187,7 @@ class Ui_MainWindow(object):
         self.delFlag_btn = QtWidgets.QPushButton(self.flags_tab)
         self.delFlag_btn.setGeometry(QtCore.QRect(100, 600, 90, 28))
         self.delFlag_btn.setObjectName("delFlag_btn")
-        self.tabs.addTab(self.flags_tab, "")
+        self.tabs.addTab(self.flags_tab, "flags_tab")
         self.points_tab = QtWidgets.QWidget()
         self.points_tab.setObjectName("points_tab")
 
@@ -199,7 +200,7 @@ class Ui_MainWindow(object):
         self.points_tbl.resizeRowsToContents()
         #######################################
         
-        self.tabs.addTab(self.points_tab, "")
+        self.tabs.addTab(self.points_tab, "points_tab")
 
         #######################################
         #Table points
@@ -212,14 +213,13 @@ class Ui_MainWindow(object):
         self.email_list = QtWidgets.QColumnView(self.email_tab)
         self.email_list.setGeometry(QtCore.QRect(0, 10, 800, 581))
         self.email_list.setObjectName("email_list")
-        self.tabs.addTab(self.email_tab, "")
+        self.tabs.addTab(self.email_tab, "email_tab")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabs.setCurrentIndex(0)
         self.addGroup_btn.clicked['bool'].connect(self.Click_addGroup_btn)
         self.addEmpl_btn.clicked['bool'].connect(self.Click_addEmpl_btn)
         self.addFlag_btn.clicked['bool'].connect(self.Click_addFlag_btn)
@@ -275,36 +275,39 @@ class Ui_MainWindow(object):
 
     def Click_addGroup_btn(self):
         print("addGroup_btn.click")
+
         #Call function associated to button > render output (for actual values)
         #db_worker.test() #imported test fnc >> only for testing purpose
-        """
-        db_worker.create_group(shortcut,\
-                                grade,\
-                                sem,\
-                                std_no,\
-                                form,\
-                                degree,\
-                                lang\
+        
+        #create empty record to DB
+        db_worker.create_group('NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL'\
                                 )
-        """
         self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(0)
     
     def Click_addEmpl_btn(self):
         print("addEmpl_btn.click")
         #Call function associated to button > render output (for actual values)
-        """
-        db_worker.create_empl(name,\
-                              surname,\
-                              w_mail,\
-                              p_mail,\
-                              pts_wo_eng,\
-                              pts_w_eng,\
-                              doct,\
-                              oblig,\
-                              flags\
+
+        db_worker.create_empl('NULL',\
+                              'NULL',\
+                              'NULL',\
+                              'NULL',\
+                              'NULL',\
+                              'NULL',\
+                              'NULL',\
+                              'NULL',\
+                              'NULL'\
                               )
-        """
+
         self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(2)
     
     def Click_addFlag_btn(self):
         print("addFlag_btn.click")
@@ -312,67 +315,77 @@ class Ui_MainWindow(object):
         #db_worker.test() #imported test fnc >> only for testing purpose
 
         self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(3)
     
     def Click_addLec_btn(self):
         print("addLec_btn.click")
         #Call function associated to button > render output (for actual values)
         #db_worker.test() #imported test fnc >> only for testing purpose
         
-        """
-        db_worker.create_course(shortcut,\
-                                weeks,\
-                                predn,\
-                                cv,\
-                                semin,\
-                                zak,\
-                                lang,\
-                                classR,\
-                                group_list\
+
+        db_worker.create_course('NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL',\
+                                'NULL'\
                                 )
-        """
+
 
         self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(1)
     
     def Click_delEmpl_btn(self):
         print("delEmpl_btn.click")
         #Call function associated to button > render output (for actual values)
         #db_worker.test() #imported test fnc >> only for testing purpose
 
-        self.setupUi(MainWindow)
-    
-    def Click_delFlag_btn(self):
-        print("addFlag_btn.click")
-        #Call function associated to button > render output (for actual values)
-        """
-        db_worker.create_wrkflg(name,\
-                                employee,\
-                                course,\
-                                flag_type,\
-                                stds_no,\
-                                hrs,\
-                                weeks,\
-                                lang,\
-                                flag_points\
-                                )
-        """
+        idx = self.employee_tbl.currentRow()
+        db_worker.delete_record(db_empls,idx)
 
         self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(2)
+    
+    def Click_delFlag_btn(self):
+        print("delFlag_btn.click")
+        #Call function associated to button > render output (for actual values)
+
+        idx = self.flags_tbl.currentRow()
+        print(idx)
+
+        db_worker.delete_record(db_wrkflg,idx)
+
+        self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(3)
     
     def Click_delGroup_btn(self):
         print("delGroup_btn.click")
+
         idx = self.group_tbl.currentRow()
+        db_worker.delete_record(db_groups,idx)
+
         print(idx)
         #db_worker.delete_record(db_groups,idx) #upravit mazani v DB podle indexu
         
         #Call function associated to button > render output (for actual values)
         self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(0)
     
     def Click_delLec_btn(self):
         print("delLec_btn.click")
+
         #Call function associated to button > render output (for actual values)
         #db_worker.test() #imported test fnc >> only for testing purpose
+        idx = self.courses_tbl.currentRow()
+        db_worker.delete_record(db_courses,idx)
+
+        print(idx)
 
         self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(1)
     
     def Click_send_emails(self):
         print("send_emails.click")
@@ -380,6 +393,7 @@ class Ui_MainWindow(object):
         #db_worker.test() #imported test fnc >> only for testing purpose
 
         self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(5)
 
     def Quit_btn_clicked(self):
         sys.exit(app.exec_())  
