@@ -230,6 +230,13 @@ class Ui_MainWindow(object):
         self.delLec_btn.clicked['bool'].connect(self.Click_delLec_btn)
         self.send_emails.clicked['bool'].connect(self.Click_send_emails)
         self.Quit_btn.clicked['bool'].connect(self.Quit_btn_clicked)
+
+        self.courses_tbl.itemChanged.connect(self.CoursesChanged)
+        self.flags_tbl.itemChanged.connect(self.FlagsChanged)
+        self.points_tbl.itemChanged.connect(self.PointsChanged)
+        self.employee_tbl.itemChanged.connect(self.EmployeeChanged)
+        self.group_tbl.itemChanged.connect(self.GroupChanged)
+
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -252,7 +259,7 @@ class Ui_MainWindow(object):
         self.send_emails.setText(_translate("MainWindow", "Send"))
         self.tabs.setTabText(self.tabs.indexOf(self.email_tab), _translate("MainWindow", "e-mail"))
 
-        #End of generated code
+#End of generated code 
     def RowsInit(self, data):
         file = data.all()
         return(len(file))
@@ -273,6 +280,40 @@ class Ui_MainWindow(object):
 
         return(print("ghettoFeeder"))
 
+################################################################################
+#Cell changed
+    def CoursesChanged(self):
+        idx = self.courses_tbl.currentRow()
+        idy = self.courses_tbl.currentColumn()
+        print('Row: ', idx, 'Column: ', idy)    
+        
+
+    def FlagsChanged(self):
+        idx = self.flags_tbl.currentRow()
+        idy = self.flags_tbl.currentColumn()
+        print('Row: ', idx, 'Column: ', idy)
+
+
+    def PointsChanged(self):
+        idx = self.points_tbl.currentRow()
+        idy = self.points_tbl.currentColumn()
+        print('Row: ', idx, 'Column: ', idy) 
+
+
+    def EmployeeChanged(self):
+        idx = self.employee_tbl.currentRow()
+        idy = self.employee_tbl.currentColumn()
+        print('Row: ', idx, 'Column: ', idy)   
+
+
+    def GroupChanged(self):
+        idx = self.group_tbl.currentRow()
+        idy = self.group_tbl.currentColumn()
+        print('Row: ', idx, 'Column: ', idy)
+
+
+################################################################################
+#ButtonActions
     def Click_addGroup_btn(self):
         print("addGroup_btn.click")
 
@@ -342,7 +383,6 @@ class Ui_MainWindow(object):
         print("delEmpl_btn.click")
         #Call function associated to button > render output (for actual values)
         #db_worker.test() #imported test fnc >> only for testing purpose
-
         idx = self.employee_tbl.currentRow()
         db_worker.delete_record(db_empls,idx)
 
