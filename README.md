@@ -29,8 +29,6 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 1. Bude DB předmětů a učitelů
 2. Bude ROLES-RULES-POINTS TABLE, kde budou rozhozene bodu za akademicke achievmenty
 
-
-
 ## Weekend crush (techno <3 RedBull :blush: )
 
 ### Co jsem stihl:
@@ -41,7 +39,7 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Práce s databázema v JSONu
 
-- Tahání dat z databází do GUI (není to kompletní)
+- Tahání dat z databází do GUI
 
 - Connections v GUI
 
@@ -49,11 +47,15 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Switch z Angular/React technologií do **Pythonu** a **PyQt5**
 
+- Přidávání záznamů
+
+- Mazání záznamů
+
+- Fixed tab jumping
+
 ### Co jsem nestihl:
 
 - Odesílání e-mailů
-
-- Hledání v databázi podle pre/su - ffixu
 
 - Dropdown
 
@@ -96,8 +98,6 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 - Jinak opět funkcionalita stejná, jak u zbytku (přidat/odebrat)
 
 ![](assets/lessons.png)
-
-
 
 #### Skupiny:
 
