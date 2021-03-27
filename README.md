@@ -53,11 +53,11 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Fixed tab jumping
 
+- Edit záznamů do DB
+
 ### Co jsem nestihl:
 
 - Odesílání e-mailů
-
-- Dropdown
 
 - Generování prac. štítků (optat se, jak na to)
 
