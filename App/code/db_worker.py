@@ -136,10 +136,11 @@ def update_db(db, idx, idy, itm):
 	tsmp = db.all()[idx]['tsmp']
 	element = list(info)[idy]
 	
-	info.update({element : int(itm)})
+	info.update({element : itm})
 	print(info)
 
 	db.update({'info': info}, Query().tsmp == tsmp)
+	print(db.all()[idx]['info'])
 
 #update_db(db_groups,0,1,'sdsdsd!!!')
 

@@ -273,8 +273,8 @@ class Ui_MainWindow(object):
 
         for y in range(len(file)):
             column = 0
-            for x in file[0]['info']:
-                val = file[0]['info'][x]
+            for x in file[y]['info']:
+                val = file[y]['info'][x]
                 table.setItem(y,column,QTableWidgetItem(str(val)))
                 column+=1
 
@@ -288,43 +288,43 @@ class Ui_MainWindow(object):
         itm = self.courses_tbl.item(idx,idy).text()
         
         db_worker.update_db(db_courses, idx, idy, itm)
-        print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
+        print('Row: ', idx, 'Column: ', idy, 'Item:', str(itm))
 
 
     def FlagsChanged(self):
         idx = self.flags_tbl.currentRow()
         idy = self.flags_tbl.currentColumn()
-        itm = self.courses_tbl.item(idx,idy).text()
+        itm = self.flags_tbl.item(idx,idy).text()
         
         db_worker.update_db(db_wrkflg, idx, idy, itm)        
-        print('Row: ', idx, 'Column: ', idy)
+        print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
 
 
     def PointsChanged(self):
         idx = self.points_tbl.currentRow()
         idy = self.points_tbl.currentColumn()
-        itm = self.courses_tbl.item(idx,idy).text()
+        itm = self.points_tbl.item(idx,idy).text()
 
         db_worker.update_db(db_points, idx, idy, itm)        
-        print('Row: ', idx, 'Column: ', idy) 
+        print('Row: ', idx, 'Column: ', idy, 'Item:', itm) 
 
 
     def EmployeeChanged(self):
         idx = self.employee_tbl.currentRow()
         idy = self.employee_tbl.currentColumn()
-        itm = self.courses_tbl.item(idx,idy).text()
+        itm = self.employee_tbl.item(idx,idy).text()
         
         db_worker.update_db(db_empls, idx, idy, itm)        
-        print('Row: ', idx, 'Column: ', idy)
+        print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
     
     
     def GroupChanged(self):
         idx = self.group_tbl.currentRow()
         idy = self.group_tbl.currentColumn()
-        itm = self.courses_tbl.item(idx,idy).text()
+        itm = self.group_tbl.item(idx,idy).text()
         
         db_worker.update_db(db_groups, idx, idy, itm)        
-        print('Row: ', idx, 'Column: ', idy)
+        print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
 
 
 ################################################################################
