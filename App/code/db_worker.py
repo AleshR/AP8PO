@@ -129,13 +129,20 @@ def delete_record(db,index):
 	return(db.remove((QueryBuilder.tsmp == file['tsmp'])))
 
 #write to DB with change
+#kurva to je jebání....
+#Je to kurva hotove... toho si musim vypalit na CDčko, znovu to vymyslet nechci!
 def update_db(db, idx, idy, itm):
-	file = db.all()[idx]['info']
-	for i in enumerate(file.items()):
-		print(i)
+	info = db.all()[idx]['info']
+	tsmp = db.all()[idx]['tsmp']
+	element = list(info)[idy]
+	
+	info.update({element : int(itm)})
+	print(info)
 
+	db.update({'info': info}, Query().tsmp == tsmp)
 
-update_db(db_groups,1,1,'df')
+#update_db(db_groups,0,1,'sdsdsd!!!')
+
 
 """
 Jak na to?!
@@ -151,7 +158,7 @@ Musim to slozit tak, že 'a' bude parametr daný přes column a 2 bude given tex
 """
 
 #delete_record(db_wrkflg,1)
-"""
+
 def test():
 	
 	#test group creation
@@ -190,6 +197,7 @@ def test():
 	#	print(val)
 	#print(file[0]['info'])
 
+"""
 for x in range(1,50):
 	pass
 	test()
