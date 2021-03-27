@@ -285,30 +285,45 @@ class Ui_MainWindow(object):
     def CoursesChanged(self):
         idx = self.courses_tbl.currentRow()
         idy = self.courses_tbl.currentColumn()
-        print('Row: ', idx, 'Column: ', idy)    
+        itm = self.courses_tbl.item(idx,idy).text()
         
+        db_worker.update_db(db_courses, idx, idy, itm)
+        print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
+
 
     def FlagsChanged(self):
         idx = self.flags_tbl.currentRow()
         idy = self.flags_tbl.currentColumn()
+        itm = self.courses_tbl.item(idx,idy).text()
+        
+        db_worker.update_db(db_wrkflg, idx, idy, itm)        
         print('Row: ', idx, 'Column: ', idy)
 
 
     def PointsChanged(self):
         idx = self.points_tbl.currentRow()
         idy = self.points_tbl.currentColumn()
+        itm = self.courses_tbl.item(idx,idy).text()
+
+        db_worker.update_db(db_points, idx, idy, itm)        
         print('Row: ', idx, 'Column: ', idy) 
 
 
     def EmployeeChanged(self):
         idx = self.employee_tbl.currentRow()
         idy = self.employee_tbl.currentColumn()
-        print('Row: ', idx, 'Column: ', idy)   
-
-
+        itm = self.courses_tbl.item(idx,idy).text()
+        
+        db_worker.update_db(db_empls, idx, idy, itm)        
+        print('Row: ', idx, 'Column: ', idy)
+    
+    
     def GroupChanged(self):
         idx = self.group_tbl.currentRow()
         idy = self.group_tbl.currentColumn()
+        itm = self.courses_tbl.item(idx,idy).text()
+        
+        db_worker.update_db(db_groups, idx, idy, itm)        
         print('Row: ', idx, 'Column: ', idy)
 
 

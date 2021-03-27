@@ -123,10 +123,32 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 
 	return(db_wrkflg.insert({'name':name, 'info':workflag, 'tsmp': str(hash_stmp.hexdigest())}))
 
-#Look at tables creation, maybe redesign DB creation, to make removing records easier...
+#Easy remove DB record (not implemented in tinyDB - deletion by given index)
 def delete_record(db,index):
 	file = db.all()[index]
 	return(db.remove((QueryBuilder.tsmp == file['tsmp'])))
+
+#write to DB with change
+def update_db(db, idx, idy, itm):
+	file = db.all()[idx]['info']
+	for i in enumerate(file.items()):
+		print(i)
+
+
+update_db(db_groups,1,1,'df')
+
+"""
+Jak na to?!
+Takže předpokládám, že ten enum je cesta. Konec konců mi vrací samotný db.all() dict.
+Já teď potřebuju přijít na to, jak iterovat dict. 
+Musim vzít první argument (např Shortcut) a v query provést update záznamu v JSONU.
+
+Priklad update:
+
+db.update({'a': 2}, Query().a.exists())
+Musim to slozit tak, že 'a' bude parametr daný přes column a 2 bude given text
+
+"""
 
 #delete_record(db_wrkflg,1)
 """
