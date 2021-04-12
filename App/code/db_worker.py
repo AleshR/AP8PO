@@ -129,7 +129,7 @@ def delete_record(db,index):
 	return(db.remove((QueryBuilder.tsmp == file['tsmp'])))
 
 #write to DB with change
-#kurva to je jebání....
+#to je jebání....
 #Je to kurva hotove... toho si musim vypalit na CDčko, znovu to vymyslet nechci!
 def update_db(db, idx, idy, itm):
 	info = db.all()[idx]['info']

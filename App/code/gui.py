@@ -11,6 +11,8 @@
 
 import sys
 import db_worker
+import mail
+import json_csv as js
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
@@ -219,6 +221,10 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.export_xls = QtWidgets.QPushButton(self.email_tab)
+        self.export_xls.setGeometry(QtCore.QRect(90, 600, 90, 28))
+        self.export_xls.setObjectName("Export")
+
         self.retranslateUi(MainWindow)
         self.addGroup_btn.clicked['bool'].connect(self.Click_addGroup_btn)
         self.addEmpl_btn.clicked['bool'].connect(self.Click_addEmpl_btn)
@@ -229,6 +235,7 @@ class Ui_MainWindow(object):
         self.delGroup_btn.clicked['bool'].connect(self.Click_delGroup_btn)
         self.delLec_btn.clicked['bool'].connect(self.Click_delLec_btn)
         self.send_emails.clicked['bool'].connect(self.Click_send_emails)
+        self.export_xls.clicked['bool'].connect(self.Click_export_xls)
         self.Quit_btn.clicked['bool'].connect(self.Quit_btn_clicked)
 
         self.courses_tbl.itemChanged.connect(self.CoursesChanged)
@@ -257,6 +264,7 @@ class Ui_MainWindow(object):
         self.tabs.setTabText(self.tabs.indexOf(self.flags_tab), _translate("MainWindow", "Pracovní štítky"))
         self.tabs.setTabText(self.tabs.indexOf(self.points_tab), _translate("MainWindow", "Body"))
         self.send_emails.setText(_translate("MainWindow", "Send"))
+        self.export_xls.setText(_translate("MainWindow", "Export"))
         self.tabs.setTabText(self.tabs.indexOf(self.email_tab), _translate("MainWindow", "e-mail"))
 
 #End of generated code 
@@ -444,11 +452,15 @@ class Ui_MainWindow(object):
     
     def Click_send_emails(self):
         print("send_emails.click")
+        mail.send_email()
         #Call function associated to button > render output (for actual values)
         #db_worker.test() #imported test fnc >> only for testing purpose
 
         self.setupUi(MainWindow)
         self.tabs.setCurrentIndex(5)
+
+    def Click_export_xls(self):
+        js.Export()
 
     def Quit_btn_clicked(self):
         sys.exit(app.exec_())  
