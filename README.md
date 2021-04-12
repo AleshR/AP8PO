@@ -55,9 +55,11 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Edit záznamů do DB
 
-### Co jsem nestihl:
-
 - Odesílání e-mailů
+
+- Convert
+
+### Co jsem nestihl:
 
 - Generování prac. štítků (optat se, jak na to)
 
@@ -67,9 +69,7 @@ Projekt do předmětu pokročilé programování - dashboard pro tajemníka
 
 - Přepočítání
 
-- Mimořádné štítky (přidám attr - info *nebo tak něco*)
-
-- Convert 
+- Mimořádné štítky (přidám attr - info *nebo tak něco*) 
 
 ### Jak to vypadá?
 
