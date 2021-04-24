@@ -163,8 +163,6 @@ def points_rec(name, course, lang, points, operation):
 
 #points_rec('Pavel Vařacha', 'AP8AK', 'CZ', 50, 'subs')
 
-
-
 #Easy remove DB record (not implemented in tinyDB - deletion by given index)
 def delete_record(db,index):
 	file = db.all()[index]
