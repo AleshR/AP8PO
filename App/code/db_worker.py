@@ -28,7 +28,7 @@ Udělení jednoho zápočtu anglicky – double – 0,2
 Udělení jednoho klasifikovaného zápočtu anglicky – double – 0,3
 Udělení jedné zkoušky – anglicky - double – 0,4
 """
-class Points():
+class Bodiky():
 	LECTURE = 1.8
 	EXCERC = 1.2
 	SEMIN = 1.2
@@ -123,6 +123,48 @@ def create_wrkflg(name, employee, course, flag_type, stds_no, hrs, weeks, lang, 
 
 	return(db_wrkflg.insert({'name':name, 'info':workflag, 'tsmp': str(hash_stmp.hexdigest())}))
 
+"""
+Points function works with arguments:
+	name == name of subject like Vařacha Pavel
+	course == name of course
+	lang == language of lessons
+	points == amount of points
+	operation == add || subs
+"""
+
+def points_rec(name, course, lang, points, operation):
+
+	if(db_points.search(Query().Name.matches(name))):
+
+		all_pts = db_points.get(Query().Name == name)['Points']
+
+		if (all_pts <= 0) and (operation == 'subs'):
+			print('Points --> we get bottom barrier == 0')
+			return(db_points.update({'Points' : 0}, Query().Name.matches(name)))
+
+		elif operation == 'add':
+			print('Add points --> ', points+all_pts)
+			return(db_points.update({'Points' : (points+all_pts)}, Query().Name.matches(name)))
+
+		elif operation == 'subs':
+			print('Substract points --> ', all_pts-points)
+			return(db_points.update({'Points' : (all_pts-points)}, Query().Name.matches(name)))
+
+	else:
+		points_rec = {
+					'Name' : name,\
+					'Course' : course,\
+					'Language' : lang,\
+					'Points' : points
+		}
+		
+		print('Let\'s create some new record braško...')
+		return(db_points.insert(points_rec))
+
+#points_rec('Pavel Vařacha', 'AP8AK', 'CZ', 50, 'subs')
+
+
+
 #Easy remove DB record (not implemented in tinyDB - deletion by given index)
 def delete_record(db,index):
 	file = db.all()[index]
@@ -142,6 +184,9 @@ def update_db(db, idx, idy, itm):
 	db.update({'info': info}, Query().tsmp == tsmp)
 	print(db.all()[idx]['info'])
 
+
+def cnt_points(db, idx, idy, itm):
+	return	print("Points!!!")
 #update_db(db_groups,0,1,'sdsdsd!!!')
 
 
@@ -161,7 +206,7 @@ Musim to slozit tak, že 'a' bude parametr daný přes column a 2 bude given tex
 #delete_record(db_wrkflg,1)
 
 def test():
-	
+	"""
 	#test group creation
 	create_group('SWI',4,'LS',36,'P','Bc.','cz')
 	print(db_groups.all())
@@ -197,8 +242,8 @@ def test():
 	#	val = file[0]['info'][x]
 	#	print(val)
 	#print(file[0]['info'])
-
 """
+""""
 for x in range(1,50):
 	pass
 	test()

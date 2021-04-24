@@ -296,44 +296,44 @@ class Ui_MainWindow(object):
         itm = self.courses_tbl.item(idx,idy).text()
         
         db_worker.update_db(db_courses, idx, idy, itm)
+        db_worker.cnt_points(db_courses, idx, idy, itm)
         print('Row: ', idx, 'Column: ', idy, 'Item:', str(itm))
-
 
     def FlagsChanged(self):
         idx = self.flags_tbl.currentRow()
         idy = self.flags_tbl.currentColumn()
         itm = self.flags_tbl.item(idx,idy).text()
         
-        db_worker.update_db(db_wrkflg, idx, idy, itm)        
+        db_worker.update_db(db_wrkflg, idx, idy, itm)
+        db_worker.cnt_points(db_wrkflg, idx, idy, itm)        
         print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
-
 
     def PointsChanged(self):
         idx = self.points_tbl.currentRow()
         idy = self.points_tbl.currentColumn()
         itm = self.points_tbl.item(idx,idy).text()
 
-        db_worker.update_db(db_points, idx, idy, itm)        
-        print('Row: ', idx, 'Column: ', idy, 'Item:', itm) 
-
+        db_worker.update_db(db_points, idx, idy, itm)
+        db_worker.cnt_points(db_points, idx, idy, itm)
+        print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
 
     def EmployeeChanged(self):
         idx = self.employee_tbl.currentRow()
         idy = self.employee_tbl.currentColumn()
         itm = self.employee_tbl.item(idx,idy).text()
         
-        db_worker.update_db(db_empls, idx, idy, itm)        
+        db_worker.update_db(db_empls, idx, idy, itm)
+        db_worker.cnt_points(db_empls, idx, idy, itm)
         print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
-    
     
     def GroupChanged(self):
         idx = self.group_tbl.currentRow()
         idy = self.group_tbl.currentColumn()
         itm = self.group_tbl.item(idx,idy).text()
         
-        db_worker.update_db(db_groups, idx, idy, itm)        
+        db_worker.update_db(db_groups, idx, idy, itm)
+        db_worker.cnt_points(db_groups, idx, idy, itm)
         print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
-
 
 ################################################################################
 #ButtonActions

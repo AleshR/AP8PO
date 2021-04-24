@@ -3,6 +3,10 @@
 import smtplib, ssl
 import getpass
 
+from tinydb import TinyDB, Query, where
+db_empls = TinyDB('../DBs/employees.json')
+
+
 port = 587
 smtp_server = "smtp.gmail.com"
 
