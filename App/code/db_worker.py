@@ -161,7 +161,7 @@ def points_rec(name, course, lang, points, operation):
 		print('Let\'s create some new record braško...')
 		return(db_points.insert(points_rec))
 
-#points_rec('Pavel Vařacha', 'AP8AK', 'CZ', 50, 'subs')
+#points_rec('Laďa Dorotik', 'AP8AK', 'CZ', 50, 'add')
 
 #Easy remove DB record (not implemented in tinyDB - deletion by given index)
 def delete_record(db,index):

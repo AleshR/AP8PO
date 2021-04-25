@@ -190,19 +190,33 @@ class Ui_MainWindow(object):
         self.delFlag_btn.setGeometry(QtCore.QRect(100, 600, 90, 28))
         self.delFlag_btn.setObjectName("delFlag_btn")
         self.tabs.addTab(self.flags_tab, "flags_tab")
-        self.points_tab = QtWidgets.QWidget()
-        self.points_tab.setObjectName("points_tab")
+
 
         #######################################
         #Table points
+        self.points_tab = QtWidgets.QWidget()
+        self.points_tab.setObjectName("points_tab")
         self.points_tbl = QtWidgets.QTableWidget(self.points_tab)
         self.points_tbl.setGeometry(QtCore.QRect(0, 10, 800, 581))
         self.points_tbl.setObjectName("points_tbl")
+
+        self.points_tbl.setColumnCount(4)
+        self.points_tbl.setRowCount(self.RowsInit(db_points))
+        self.points_tbl.setHorizontalHeaderLabels([\
+                'Jméno',\
+                'Předmět',\
+                'Jazyk',\
+                'Body',\
+        ])
+
+        self.TablePoint(self.points_tbl,db_points) #Let's feed table with data
+        
         self.points_tbl.resizeColumnsToContents()
         self.points_tbl.resizeRowsToContents()
         #######################################
         
         self.tabs.addTab(self.points_tab, "points_tab")
+
 
         #######################################
         #Table points
@@ -278,7 +292,6 @@ class Ui_MainWindow(object):
 
     def TableFeeder(self,table,data):
         file = data.all()
-
         for y in range(len(file)):
             column = 0
             for x in file[y]['info']:
@@ -287,6 +300,25 @@ class Ui_MainWindow(object):
                 column+=1
 
         return(print("ghettoFeeder"))
+
+    def TablePoint(self, table, data):
+        file = data.all()
+        for y in range(len(file)):
+            column = 0
+
+            if int(file[y]['Points'])  < 200:
+                #table.setItem(y,column,setBackgroundColor('#FF4545'))
+                print(file[y]['Points'])
+            else:
+                #table.setItem(y,column,setBackgroundColor('#ACFF60'))
+                print(file[y]['Points'])
+
+            for x in file[y]:
+                val = file[y][x]
+                table.setItem(y,column,QTableWidgetItem(str(val)))
+                column+=1
+        
+        return(print("pointsfeeder"))  
 
 ################################################################################
 #Cell changed
