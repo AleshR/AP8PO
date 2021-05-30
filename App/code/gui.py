@@ -329,13 +329,25 @@ class Ui_MainWindow(object):
 
         rule_prednaska = 60
 
-        for cnt in range(len(groups)):
-            if(rule_prednaska > groups[cnt]['info']['Students']):
-                print("Tvorim prednasku pro: ", groups[cnt]['info']['Students'], ' studentu')
+        for cnt in range(len(courses)):
+            group = courses[cnt]['info']['Group_list']
+            for x in range(len(groups)):
+                if(groups[x]['info']['Shortcut'] == group):
+                    students = int(groups[x]['info']['Students'])
+                    print('Pocet studnetu je:', students)
+
+            if(students // rule_prednaska == 0):
+                print('tvorim prednasku')
+            
             else:
-                prednasky = groups[cnt]['info']['Students']%rule_prednaska
-                zbytek =groups[cnt]['info']['Students']-(rule_prednaska*prednasky)
-                print("Tvorim prednasky pro: ", prednasky, "skupin + ", zbytek)
+                prednasky = students // rule_prednaska
+                zbytek = students % rule_prednaska
+
+                for x in range(prednasky):
+                    print("Tvorim", x, '-tou prednasku')
+
+                print('+ jedna pro zbytek: ', zbytek)
+
     
         for c in range(len(courses)):
             
