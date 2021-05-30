@@ -177,7 +177,7 @@ class Ui_MainWindow(object):
                 'Body',\
             ])
 
-        self.TableFeeder(self.flags_tbl,db_wrkflg) #Let's feed table with data
+        self.WorkFlag_feeder(self.flags_tbl,db_wrkflg) #Let's feed table with data
         
         self.flags_tbl.resizeColumnsToContents()
         self.flags_tbl.resizeRowsToContents()
@@ -301,25 +301,77 @@ class Ui_MainWindow(object):
 
         return(print("ghettoFeeder"))
 
+    def WorkFlag_feeder(self, table, data):
+        file = data.all()
+
+
+        #Checker workflags
+        for y in range(len(file)):
+            column = 0
+            for x in file[y]['info']:
+                val = file[y]['info'][x]
+                table.setItem(y,column,QTableWidgetItem(str(val)))
+                #Colorizer
+                if len((file[y]['info']['Employee'])) == 0:
+                    table.item(y,column).setBackground(QtGui.QColor(255,70,70))
+                else:
+                    print(file[y]['info']['Employee'])
+                    table.item(y,column).setBackground(QtGui.QColor(175,255,80))                
+                column+=1                
+        
+        return(print("pointsfeeder"))  
+
+    def Workflags_creator(self, data):
+    
+        work_flags = db_wrkflg.all()
+        groups = db_groups.all()
+        courses = db_courses.all()
+    
+        for c in range(len(courses)):
+            
+            for x in range(courses[c]['info']['CV']):
+                print('Cvičeníčkocvičení')
+            
+            for f in range(courses[c]['info']['Seminar']):
+                print('SeminarovanickoSeminarovani')
+            
+            for f in range(courses[c]['info']['Predn']):
+                print('PrednasenickoPrednaseni')
+
+        return(print("WorkflagCreator"))
+
+
     def TablePoint(self, table, data):
         file = data.all()
         for y in range(len(file)):
             column = 0
 
-            if int(file[y]['Points'])  < 200:
-                #table.setItem(y,column,setBackgroundColor('#FF4545'))
-                print(file[y]['Points'])
-            else:
-                #table.setItem(y,column,setBackgroundColor('#ACFF60'))
-                print(file[y]['Points'])
-
             for x in file[y]:
                 val = file[y][x]
                 table.setItem(y,column,QTableWidgetItem(str(val)))
+
+                #Colorizer
+                if int(file[y]['Points'])  < 500:
+                    print(file[y]['Points'])
+                    table.item(y,column).setBackground(QtGui.QColor(255,70,70))
+
+                else:
+                    print(file[y]['Points'])
+                    table.item(y,column).setBackground(QtGui.QColor(175,255,80))
+                
                 column+=1
         
         return(print("pointsfeeder"))  
 
+    def Colorizer(self, table, row, column, state):
+        if(state == True):
+            table.item(row,column).setBackground(QtGui.QColor(175,255,80))
+            print('Color set to green')
+        else:
+            table.item(row,column).setBackground(QtGui.QColor(255,70,70))
+            print('Color set to red')
+
+        return(print('Colorized'))
 ################################################################################
 #Cell changed
     def CoursesChanged(self):
@@ -331,6 +383,9 @@ class Ui_MainWindow(object):
         db_worker.cnt_points(db_courses, idx, idy, itm)
         print('Row: ', idx, 'Column: ', idy, 'Item:', str(itm))
 
+        self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(1)
+
     def FlagsChanged(self):
         idx = self.flags_tbl.currentRow()
         idy = self.flags_tbl.currentColumn()
@@ -340,14 +395,20 @@ class Ui_MainWindow(object):
         db_worker.cnt_points(db_wrkflg, idx, idy, itm)        
         print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
 
+        self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(3)
+
     def PointsChanged(self):
         idx = self.points_tbl.currentRow()
         idy = self.points_tbl.currentColumn()
         itm = self.points_tbl.item(idx,idy).text()
 
-        db_worker.update_db(db_points, idx, idy, itm)
-        db_worker.cnt_points(db_points, idx, idy, itm)
+        #db_worker.update_db(db_points, idx, idy, itm)
+        #db_worker.cnt_points(db_points, idx, idy, itm)
         print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
+        
+        self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(4)        
 
     def EmployeeChanged(self):
         idx = self.employee_tbl.currentRow()
@@ -357,6 +418,9 @@ class Ui_MainWindow(object):
         db_worker.update_db(db_empls, idx, idy, itm)
         db_worker.cnt_points(db_empls, idx, idy, itm)
         print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
+        
+        self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(2)        
     
     def GroupChanged(self):
         idx = self.group_tbl.currentRow()
@@ -366,6 +430,9 @@ class Ui_MainWindow(object):
         db_worker.update_db(db_groups, idx, idy, itm)
         db_worker.cnt_points(db_groups, idx, idy, itm)
         print('Row: ', idx, 'Column: ', idy, 'Item:', itm)
+
+        self.setupUi(MainWindow)
+        self.tabs.setCurrentIndex(0)
 
 ################################################################################
 #ButtonActions
