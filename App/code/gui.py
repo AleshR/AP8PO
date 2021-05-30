@@ -304,7 +304,6 @@ class Ui_MainWindow(object):
     def WorkFlag_feeder(self, table, data):
         file = data.all()
 
-
         #Checker workflags
         for y in range(len(file)):
             column = 0
@@ -317,15 +316,26 @@ class Ui_MainWindow(object):
                 else:
                     print(file[y]['info']['Employee'])
                     table.item(y,column).setBackground(QtGui.QColor(175,255,80))                
-                column+=1                
+                column+=1
         
+        self.Workflags_creator()
         return(print("pointsfeeder"))  
 
-    def Workflags_creator(self, data):
+    def Workflags_creator(self):
     
         work_flags = db_wrkflg.all()
         groups = db_groups.all()
         courses = db_courses.all()
+
+        rule_prednaska = 60
+
+        for cnt in range(len(groups)):
+            if(rule_prednaska > groups[cnt]['info']['Students']):
+                print("Tvorim prednasku pro: ", groups[cnt]['info']['Students'], ' studentu')
+            else:
+                prednasky = groups[cnt]['info']['Students']%rule_prednaska
+                zbytek =groups[cnt]['info']['Students']-(rule_prednaska*prednasky)
+                print("Tvorim prednasky pro: ", prednasky, "skupin + ", zbytek)
     
         for c in range(len(courses)):
             
